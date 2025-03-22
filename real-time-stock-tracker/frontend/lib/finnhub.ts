@@ -19,7 +19,6 @@ type QuoteResponse = {
       },
     });
 
-    console.log(res);
   
     return {
       symbol,

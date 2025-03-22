@@ -1,10 +1,17 @@
+"use client";
+
 import LoginAlert from "./LoginAlert";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
     return (
       <nav className="bg-blue-600 p-4 text-white flex justify-between items-center">
         <h1 className="text-xl font-bold">Real-Time Stock Tracker</h1>
         <div className="flex gap-4">
+            {/* SearchBar Here */}
+            <div className="relative w-full max-w-sm">
+              <SearchBar />
+            </div>
             <LoginAlert
             lastLoginTime="2024-03-01T10:00:00Z"
             currentLoginTime="2024-03-20T08:00:00Z"
@@ -16,5 +23,5 @@ export default function Navbar() {
         </div>
       </nav>
     );
-  }
+}
   
