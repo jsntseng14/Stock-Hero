@@ -9,8 +9,6 @@ import LiveQuoteWrapper from "@/components/LiveQuoteWrapper";
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Navbar */}
-      <Navbar />
 
       {/* Real-time Stock Ticker */}
       <StockTicker />

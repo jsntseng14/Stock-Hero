@@ -99,7 +99,7 @@ export default function SearchBar() {
       <div className="relative">
             <input
                 type="text"
-                className="w-full px-4 py-2 pr-10 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full px-4 py-2 pr-10 border border-gray-300 rounded shadow-sm text-gray-800  focus:outline-none focus:ring focus:border-blue-500"
                 placeholder="Search stocks (e.g. AAPL, Tesla)..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
