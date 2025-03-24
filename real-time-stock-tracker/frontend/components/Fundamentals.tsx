@@ -32,7 +32,7 @@ export default function Fundamentals({ symbol }: FundamentalsProps) {
 
   return (
     <div className="bg-white text-gray-800 shadow rounded-lg p-6">
-      <h2 className="text-xl font-semibold mb-4 tracking-tight text-blue-600">📊 Fundamentals</h2>
+      <h2 className="text-xl font-semibold mb-4 tracking-tight text-gray-800">📊 Fundamentals</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 text-sm">
         <div className="flex items-start gap-3 border-b pb-2">

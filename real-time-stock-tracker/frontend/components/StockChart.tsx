@@ -28,7 +28,7 @@ export default function StockChart({
 
   return (
     <div className="bg-white shadow rounded p-6 pb-12" style={{ height }}>
-      <h2 className="text-lg font-semibold text-blue-600 mb-4">{title}</h2>
+      <h2 className="text-lg font-semibold text-gray-800 mb-4">{title}</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <XAxis dataKey="time" tick={{ fontSize: 10 }} />

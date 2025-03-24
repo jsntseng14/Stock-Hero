@@ -95,6 +95,7 @@ export type ValuationMetrics = {
 export type InsiderSentiment = {
   symbol: string;
   data: {
+    year: any;
     month: string;
     change: number;
     mspr: number; // Monthly share purchase ratio

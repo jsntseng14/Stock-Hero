@@ -35,7 +35,7 @@ export default function StockSummary({
 
   return (
     <div className="col-span-full bg-white shadow rounded p-6">
-      <h2 className="text-lg font-semibold text-blue-600 mb-4 tracking-tight">
+      <h2 className="text-lg font-semibold text-gray-800 mb-4 tracking-tight">
         📈 Stock Summary
       </h2>
 

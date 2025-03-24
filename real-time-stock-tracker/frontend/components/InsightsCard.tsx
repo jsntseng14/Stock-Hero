@@ -19,8 +19,8 @@ export type ValuationMetric = {
 };
 
 type InsiderSentiment = {
+  sentimentScore: number;
   sentimentDescription: string;
-  sentimentScore: any;
   month: string;
   change: number;
   mspr: number;
@@ -40,7 +40,7 @@ export default function StockInsights({
 }: StockInsightsProps) {
   return (
     <div className="col-span-full bg-white shadow rounded p-6">
-      <h2 className="text-lg font-semibold text-blue-600 mb-4 tracking-tight">
+      <h2 className="text-lg font-semibold text-gray-800 mb-4 tracking-tight">
           Stock Insights
       </h2>
 
@@ -69,14 +69,28 @@ export default function StockInsights({
             </h3>
             <p>
               <strong>Score:</strong>{" "}
-              {insiderSentiment.sentimentScore?.toFixed(2) ?? "N/A"}
+              {insiderSentiment.sentimentScore.toFixed(2)}
             </p>
             <p>
               <strong>Description:</strong>{" "}
-              {insiderSentiment.sentimentDescription ?? "N/A"}
+              {insiderSentiment.sentimentDescription === "Bullish" ? "📈 Bullish" :
+              insiderSentiment.sentimentDescription === "Bearish" ? "📉 Bearish" : "😐 Neutral"}
+            </p>
+            <p>
+              <strong>Month:</strong>{" "}
+              {insiderSentiment.month}
+            </p>
+            <p>
+              <strong>Change:</strong>{" "}
+              {insiderSentiment.change.toLocaleString()}
+            </p>
+            <p>
+              <strong>MSPR:</strong>{" "}
+              {insiderSentiment.mspr.toFixed(2)}
             </p>
           </div>
         )}
+
 
         {/* Valuation Metrics */}
         {valuation && (

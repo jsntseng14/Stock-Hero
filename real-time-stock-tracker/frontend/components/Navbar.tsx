@@ -2,14 +2,31 @@
 
 import SearchBar from "./SearchBar";
 import LoginAlert from "./LoginAlert";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-200 w-full">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-blue-600 whitespace-nowrap">
-          Stock Hero
+        {/* Logo + Title */}
+        <div className="flex items-center gap-2 text-2xl font-bold text-gray-800 whitespace-nowrap">
+        <div className="flex items-center gap-2 whitespace-nowrap">
+        <Image
+          src="/assets/willow-logo.png"
+          alt="Willow Logo"
+          width={40}
+          height={40}
+          className="mr-2"
+        />
+      </div>
+          <span>Chillow Trade</span>
+        <Image
+          src="/assets/chase-logo.png"
+          alt="Chase Logo"
+          width={47}
+          height={47}
+          className="mr-2"
+        />
         </div>
 
         {/* Right Side */}

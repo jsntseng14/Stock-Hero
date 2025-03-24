@@ -14,7 +14,7 @@ type NewsItem = {
 export default function NewsCard({ news }: { news: NewsItem[] }) {
   return (
     <div className="col-span-full bg-white shadow rounded p-6 space-y-4">
-      <h2 className="text-lg font-semibold text-blue-600">📰 Recent News</h2>
+      <h2 className="text-lg font-semibold text-gray-800">📰 Recent News</h2>
       {news.length === 0 && (
         <p className="text-sm text-gray-500">No recent news found.</p>
       )}

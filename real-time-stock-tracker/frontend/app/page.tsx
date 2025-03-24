@@ -31,9 +31,6 @@ export default function Home() {
         {/* Portfolio Summary */}
         <PortfolioSummary />
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

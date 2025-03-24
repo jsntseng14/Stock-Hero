@@ -19,8 +19,24 @@ export default async function StockDetail({ params }: { params: { symbol: string
   const peers = await fetchPeerCompanies(symbol);
   const valuationMetrics = await fetchValuationMetrics(symbol);
   const sentiment = await fetchInsiderSentiment(symbol);
-
   
+  const latestSentimentRaw = sentiment.at(-1); // last month (most recent)
+
+  const latestSentiment = latestSentimentRaw
+    ? {
+        sentimentScore: latestSentimentRaw.mspr,
+        sentimentDescription:
+            latestSentimentRaw.mspr > 0
+            ? "Bullish"
+            : latestSentimentRaw.mspr < 0
+            ? "Bearish"
+            : "Neutral",
+        month: `${latestSentimentRaw.year}-${latestSentimentRaw.month.toString().padStart(2, "0")}`,
+        change: latestSentimentRaw.change,
+        mspr: latestSentimentRaw.mspr,
+        }
+    : undefined;
+
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4">
@@ -51,11 +67,12 @@ export default async function StockDetail({ params }: { params: { symbol: string
           
           <StockChart symbol={symbol} />
           <Fundamentals symbol={symbol} />
-          <NewsCard news={news} />
           <InsightsCard
             recommendations={recommendations[0]}
             valuation={valuationMetrics} 
+            insiderSentiment={latestSentiment}
           />
+          <NewsCard news={news} />
         </div>
       </div>
     </div>
