@@ -27,36 +27,50 @@ export default function SearchBar() {
   const router = useRouter();
 
 
-  const searchStocks = async (term: string) => {
+  const searchStocks = async (term: string, signal: AbortSignal) => {
     if (!term.trim()) {
       setResults([]);
       return;
     }
-
+  
     setLoading(true);
-    const res = await axios.get<{ result: SearchResult[] }>(
-      "https://finnhub.io/api/v1/search",
-      {
-        params: {
-          q: term,
-          token: process.env.NEXT_PUBLIC_FINNHUB_API_KEY,
-        },
+    try {
+      const res = await axios.get<{ result: SearchResult[] }>(
+        "https://finnhub.io/api/v1/search",
+        {
+          params: {
+            q: term,
+            token: process.env.NEXT_PUBLIC_FINNHUB_API_KEY,
+          },
+          signal,
+        } as any
+      );
+      setResults(res.data.result);
+      setIsOpen(true);
+    } catch (err: any) {
+      if (err.name === "AbortError") {
+        return; // Request was aborted
       }
-    );
-    setResults(res.data.result);
-    setIsOpen(true);
-    setLoading(false);
+      console.error("Search failed:", err);
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
   // Debounce the search input
   useEffect(() => {
+    const controller = new AbortController();
     const delay = setTimeout(() => {
       if (query.trim()) {
-        searchStocks(query);
+        searchStocks(query, controller.signal);
       }
     }, 1000); // 1.0s debounce
 
-    return () => clearTimeout(delay); // clear previous timeout on each keystroke
+    return () => {
+      clearTimeout(delay)
+      controller.abort();
+    }; // clear previous timeout on each keystroke
   }, [query]);
 
 

@@ -14,6 +14,10 @@ type FundamentalsProps = {
   symbol: string;
 };
 
+// Optional formatter helper
+const formatNumber = (num: number | null | undefined, prefix = "", suffix = "") =>
+  num != null ? `${prefix}${num.toFixed(2)}${suffix}` : "N/A";
+
 export default function Fundamentals({ symbol }: FundamentalsProps) {
   const [fundamentals, setFundamentals] = useState<Awaited<ReturnType<typeof fetchFundamentals>> | null>(null);
 
@@ -40,7 +44,7 @@ export default function Fundamentals({ symbol }: FundamentalsProps) {
           <div>
             <div className="font-semibold text-gray-700">Market Cap</div>
             <div className="font-mono text-blue-900">
-              {fundamentals.marketCapitalization !== undefined
+              {fundamentals.marketCapitalization != null
                 ? `$${fundamentals.marketCapitalization.toLocaleString()}B`
                 : "N/A"}
             </div>
@@ -52,9 +56,7 @@ export default function Fundamentals({ symbol }: FundamentalsProps) {
           <div>
             <div className="font-semibold text-gray-700">P/E Ratio</div>
             <div className="font-mono text-blue-900">
-              {fundamentals.peBasicExclExtraTTM !== undefined
-                ? fundamentals.peBasicExclExtraTTM.toFixed(2)
-                : "N/A"}
+              {formatNumber(fundamentals.peBasicExclExtraTTM)}
             </div>
           </div>
         </div>
@@ -64,9 +66,7 @@ export default function Fundamentals({ symbol }: FundamentalsProps) {
           <div>
             <div className="font-semibold text-gray-700">EPS (TTM)</div>
             <div className="font-mono text-blue-900">
-              {fundamentals.epsInclExtraItemsTTM !== undefined
-                ? `$${fundamentals.epsInclExtraItemsTTM.toFixed(2)}`
-                : "N/A"}
+              {formatNumber(fundamentals.epsInclExtraItemsTTM, "$")}
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function Fundamentals({ symbol }: FundamentalsProps) {
           <div>
             <div className="font-semibold text-gray-700">Revenue (TTM)</div>
             <div className="font-mono text-blue-900">
-              {fundamentals.revenueTTM !== undefined
+              {fundamentals.revenueTTM != null
                 ? `$${fundamentals.revenueTTM.toLocaleString()}B`
                 : "N/A"}
             </div>
@@ -88,9 +88,7 @@ export default function Fundamentals({ symbol }: FundamentalsProps) {
           <div>
             <div className="font-semibold text-gray-700">Dividend Yield</div>
             <div className="font-mono text-blue-900">
-              {fundamentals.dividendYieldIndicatedAnnual !== undefined
-                ? `${fundamentals.dividendYieldIndicatedAnnual.toFixed(2)}%`
-                : "N/A"}
+              {formatNumber(fundamentals.dividendYieldIndicatedAnnual, "", "%")}
             </div>
           </div>
         </div>
