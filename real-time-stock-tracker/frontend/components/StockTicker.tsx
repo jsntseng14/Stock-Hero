@@ -6,6 +6,12 @@ const mockStocks = [
   { symbol: "TSLA", price: 780.12 },
   { symbol: "AMZN", price: 3200.50 },
   { symbol: "GOOGL", price: 2800.32 },
+  { symbol: "SNOW", price: 800.32 },
+  { symbol: "UBER", price: 1800.32 },
+  { symbol: "ABNB", price: 1800.32 },
+  { symbol: "MSFT", price: 1800.32 },
+  
+
 ];
 
 export default function StockTicker() {
