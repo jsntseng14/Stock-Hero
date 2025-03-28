@@ -45,10 +45,7 @@ export default function Navbar() {
           />
 
           <button className="bg-blue-100 text-blue-600 px-4 py-2 rounded hover:bg-blue-200 transition whitespace-nowrap">
-            Login
-          </button>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition whitespace-nowrap">
-            Settings
+            Login/Sign Up
           </button>
         </div>
       </div>
