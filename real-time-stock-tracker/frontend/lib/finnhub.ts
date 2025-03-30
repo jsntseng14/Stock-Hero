@@ -9,6 +9,7 @@ const API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
 
 // Raw response from the Finnhub API
 export type FinnhubQuote = {
+  v: number | undefined;
   c: number;
   h: number;
   l: number;

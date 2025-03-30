@@ -1,6 +1,7 @@
 "use client";
 
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart } from "lucide-react";
 
 const mockData = [
   { name: "Mon", price: 150 },
@@ -27,7 +28,7 @@ function generateMockData(basePrice: number = 150): { name: string; price: numbe
 
 
 function SectorCard({ sector }: { sector: (typeof performanceData)[0] }) {
-  const mockData = generateMockData(145 + Math.random() * 20); 
+  
   return (
     <div className="rounded border border-gray-300 p-4 shadow-sm transition-transform duration-200 hover:scale-105 hover:shadow-md bg-white">
       <div className="flex justify-between items-center mb-2">
@@ -70,7 +71,10 @@ function SectorCard({ sector }: { sector: (typeof performanceData)[0] }) {
 export function SampleMarketPerformance() {
   return (
     <div className="bg-white shadow rounded p-6">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">📊 Sector Performance</h3>
+      <h3 className="flex items-center text-lg font-semibold text-gray-800 mb-4">
+        <PieChart className="text-blue-500 mr-2" size={20} />
+        Sector Performance
+      </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {performanceData.map((sector) => (
           <SectorCard key={sector.name} sector={sector} />

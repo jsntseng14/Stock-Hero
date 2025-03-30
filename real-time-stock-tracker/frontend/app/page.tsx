@@ -6,7 +6,7 @@ import PortfolioSummary from "../components/PortfolioSummary";
 import LiveQuoteWrapper from "@/components/LiveQuoteWrapper";
 import Watchlist from "@/components/WatchList";
 import { SampleMarketPerformance } from "@/components/SampleMiniChart";
-import { BarChart2, TrendingUp, Zap } from "lucide-react";
+import { BarChart2, TrendingUp, Zap} from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -20,7 +20,7 @@ export default function Home() {
       <StockTicker />
 
       {!isLoggedIn && (
-          <div className="relative text-center py-10 px-6 shadow-inner overflow-hidden">
+          <div className="relative text-center py-10 shadow-inner overflow-hidden">
         
           {/* Overlay Content */}
           <div className="text-center py-16 px-6 bg-white shadow-sm">
